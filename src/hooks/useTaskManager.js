@@ -64,6 +64,14 @@ export const useTaskManager = () => {
     ))
     toast.success(`Task marked as ${newStatus}!`)
   }
+const rescheduleTask = (taskId, newDueDate) => {
+    setTasks(prev => prev.map(task => 
+      task.id === taskId 
+        ? { ...task, dueDate: newDueDate, updatedAt: new Date().toISOString() }
+        : task
+    ))
+    toast.success('Task rescheduled successfully!')
+  }
 
   const getFilteredAndSortedTasks = (selectedProject, filterStatus, sortBy) => {
     let filtered = tasks
@@ -96,13 +104,14 @@ export const useTaskManager = () => {
     })
   }
 
-  return {
+return {
     tasks,
     projects,
     createTask,
     updateTask,
     deleteTask,
     updateTaskStatus,
+    rescheduleTask,
     getFilteredAndSortedTasks
   }
 }

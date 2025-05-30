@@ -94,6 +94,63 @@
   .status-completed {
     @apply border-l-4 border-green-500;
   }
+/* Calendar View Styles */
+  .calendar-container {
+    @apply overflow-hidden;
+  }
+  
+  .calendar-header {
+    @apply bg-surface-50 dark:bg-surface-900;
+  }
+  
+  .calendar-grid {
+    @apply border-t border-surface-200 dark:border-surface-700;
+  }
+  
+  .calendar-weekdays {
+    @apply bg-surface-100 dark:bg-surface-800;
+  }
+  
+  .calendar-days {
+    @apply bg-white dark:bg-surface-800;
+  }
+  
+  .calendar-day {
+    @apply transition-all duration-200 hover:bg-surface-25 dark:hover:bg-surface-750;
+  }
+  
+  .calendar-day.drag-over {
+    @apply bg-primary bg-opacity-10 dark:bg-primary dark:bg-opacity-20 border-primary;
+  }
+  
+  .calendar-task-card {
+    @apply transition-all duration-200 hover:scale-105;
+  }
+  
+  .calendar-task-card:hover {
+    @apply shadow-md z-10 relative;
+  }
+  
+  .calendar-task-card.dragging {
+    @apply opacity-50 transform rotate-2 scale-105 shadow-lg z-50;
+  }
+  
+  /* Responsive calendar adjustments */
+  @media (max-width: 640px) {
+    .calendar-day {
+      @apply min-h-[60px] text-xs;
+    }
+    
+    .calendar-task-card {
+      @apply text-xs px-1 py-1;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .calendar-day {
+      @apply min-h-[140px];
+    }
+  }
 
 @layer utilities {
   .text-gradient {
