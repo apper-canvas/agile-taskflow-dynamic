@@ -19,6 +19,7 @@ dark: '#0891b2'
 },
 accent: '#f59e0b',
 surface: {
+25: '#fdfdfe',    // Extra lightest
 50: '#f8fafc',    // Lightest
 100: '#f1f5f9',
 200: '#e2e8f0',
@@ -27,6 +28,7 @@ surface: {
 500: '#64748b',  // Added
 600: '#475569',  // Added
 700: '#334155',  // Added
+750: '#293548',  // Extra dark
 800: '#1e293b',  // Added
 900: '#0f172a'    // Darkest
 }
