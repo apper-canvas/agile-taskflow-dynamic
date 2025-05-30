@@ -24,9 +24,9 @@ const MainFeature = () => {
     updateTask,
     deleteTask,
     updateTaskStatus,
-    getFilteredAndSortedTasks
-  } = useTaskManager()
+getFilteredAndSortedTasks,
 rescheduleTask
+  } = useTaskManager()
 
   const handleSubmitTask = (taskData) => {
     if (!taskData.title.trim()) {
