@@ -48,13 +48,17 @@ const TaskForm = ({ isOpen, onClose, onSubmit, editingTask, projects }) => {
       title: '',
       description: '',
       priority: 'medium',
-      dueDate: '',
-      projectId: '1',
-      status: 'pending'
-    })
-    onClose()
-  }
-
+// Combine date and time for submission
+    let dueDate = null
+    if (formData.dueDate) {
+      dueDate = new Date(formData.dueDate)
+      if (formData.dueTime) {
+        const [hours, minutes] = formData.dueTime.split(':')
+        dueDate.setHours(parseInt(hours), parseInt(minutes), 0)
+      }
+      dueDate = dueDate.toISOString()
+    }
+onSubmit({ ...formData, dueDate })
   return (
     <AnimatePresence>
       {isOpen && (
@@ -175,6 +179,20 @@ const TaskForm = ({ isOpen, onClose, onSubmit, editingTask, projects }) => {
                         <option value="in-progress">In Progress</option>
                         <option value="completed">Done</option>
                       </select>
+{/* Due Time Field */}
+            {formData.dueDate && (
+              <div>
+                <label className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">
+                  Due Time
+                </label>
+                <input
+                  type="time"
+                  value={formData.dueTime}
+                  onChange={(e) => setFormData(prev => ({ ...prev, dueTime: e.target.value }))}
+                  className="input-field"
+                />
+              </div>
+            )}
                     </div>
                   )}
                 </div>

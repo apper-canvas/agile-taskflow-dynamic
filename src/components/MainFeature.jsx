@@ -6,6 +6,7 @@ import ApperIcon from './ApperIcon'
 import TaskForm from './TaskForm'
 import TaskCard from './TaskCard'
 import KanbanBoard from './KanbanBoard'
+import CalendarView from './CalendarView'
 import { useTaskManager } from '../hooks/useTaskManager'
 
 const MainFeature = () => {
@@ -25,6 +26,7 @@ const MainFeature = () => {
     updateTaskStatus,
     getFilteredAndSortedTasks
   } = useTaskManager()
+rescheduleTask
 
   const handleSubmitTask = (taskData) => {
     if (!taskData.title.trim()) {
@@ -81,6 +83,25 @@ const MainFeature = () => {
   const filteredTasks = getFilteredAndSortedTasks(selectedProject, filterStatus, sortBy)
 
   const renderContent = () => {
+if (viewMode === 'calendar') {
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="min-h-[600px]"
+        >
+          <CalendarView
+            tasks={filteredTasks}
+            projects={projects}
+            onEditTask={handleEditTask}
+            onDeleteTask={deleteTask}
+            onUpdateTaskStatus={updateTaskStatus}
+            onRescheduleTask={rescheduleTask}
+          />
+        </motion.div>
+      )
+    }
     if (viewMode === 'board') {
       return (
         <motion.div
