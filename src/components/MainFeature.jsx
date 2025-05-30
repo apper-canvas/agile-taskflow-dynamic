@@ -6,7 +6,6 @@ import ApperIcon from './ApperIcon'
 import TaskForm from './TaskForm'
 import TaskCard from './TaskCard'
 import KanbanBoard from './KanbanBoard'
-import CalendarView from './CalendarView'
 import { useTaskManager } from '../hooks/useTaskManager'
 
 const MainFeature = () => {
@@ -17,14 +16,13 @@ const MainFeature = () => {
   const [filterStatus, setFilterStatus] = useState('all') // all, pending, in-progress, completed
   const [editingTask, setEditingTask] = useState(null)
 
-const {
+  const {
     tasks,
     projects,
     createTask,
     updateTask,
     deleteTask,
     updateTaskStatus,
-    rescheduleTask,
     getFilteredAndSortedTasks
   } = useTaskManager()
 
@@ -97,24 +95,6 @@ const {
             onEditTask={handleEditTask}
             onDeleteTask={deleteTask}
             onUpdateTaskStatus={updateTaskStatus}
-          />
-        </motion.div>
-      )
-    }
-if (viewMode === 'calendar') {
-      return (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="min-h-[600px]"
-        >
-          <CalendarView
-            tasks={filteredTasks}
-            projects={projects}
-            onEditTask={handleEditTask}
-            onDeleteTask={deleteTask}
-            onRescheduleTask={rescheduleTask}
           />
         </motion.div>
       )

@@ -37,19 +37,15 @@ const TaskForm = ({ isOpen, onClose, onSubmit, editingTask, projects }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!taskForm.title.trim()) {
-} else {
-        dueDate = new Date(`${formData.dueDate}T09:00:00`).toISOString()
-      }
+      return
     }
+    onSubmit(taskForm)
+    onClose()
+  }
 
-    const taskData = {
-      title: formData.title,
-      description: formData.description,
-      dueDate,
-      priority: formData.priority,
-      status: formData.status,
-      projectId: formData.projectId
-    }
+  const handleClose = () => {
+    setTaskForm({
+      title: '',
       description: '',
       priority: 'medium',
       dueDate: '',
