@@ -94,27 +94,41 @@
   .status-completed {
     @apply border-l-4 border-green-500;
   }
-/* Calendar View Styles */
-.calendar-day {
-  @apply transition-all duration-200 hover:bg-surface-25 dark:hover:bg-surface-750;
-}
 
-.calendar-day.drag-over {
-  @apply border-primary bg-primary bg-opacity-10 dark:bg-opacity-20;
-}
+  /* Calendar View Styles */
+  .calendar-day {
+    @apply transition-all duration-200 hover:bg-surface-25 dark:hover:bg-surface-750;
+  }
 
-.calendar-task-card {
-  @apply cursor-move transition-all duration-200 group;
-}
+  .calendar-day.drag-over {
+    @apply border-primary bg-primary bg-opacity-10 dark:bg-opacity-20;
+  }
 
-.calendar-task-card.dragging {
-  @apply opacity-50 transform rotate-2 scale-105;
-}
+  .calendar-task-card {
+    @apply cursor-move transition-all duration-200;
+  }
 
-.calendar-task-card:hover {
-  @apply transform scale-102;
-}
+  .calendar-task-card.dragging {
+    @apply opacity-50 transform rotate-2 scale-105;
+  }
 
+  .calendar-task-card:hover {
+    @apply transform scale-105;
+  }
+
+  /* Calendar task priority colors */
+  .task-priority-high {
+    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+  }
+
+  .task-priority-medium {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+  }
+
+  .task-priority-low {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  }
+}
 /* Calendar grid responsive adjustments */
 @media (max-width: 640px) {
   .calendar-day {
@@ -131,20 +145,6 @@
     min-height: 120px;
   }
 }
-
-/* Calendar task priority colors */
-.task-priority-high {
-  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
-}
-
-.task-priority-medium {
-  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
-}
-
-.task-priority-low {
-  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
-}
-
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
